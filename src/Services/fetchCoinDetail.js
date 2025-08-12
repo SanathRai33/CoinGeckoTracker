@@ -1,14 +1,12 @@
 import axiosInstance from "../helper/axiosInstance";
 
-const fetchCoinDetail = async () => {
-
+const fetchCoinDetail = async (id) => {
   try {
-    const response = await axiosInstance.get(
-      `/coins/${id}`
-    );
+    const response = await axiosInstance.get(`/coins/${id}`);
     return response.data;
   } catch (error) {
-    return console.log(error);
+    console.error("Error fetching coin details:", error);
+    throw error;
   }
 };
 

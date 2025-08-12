@@ -46,11 +46,11 @@ const CoinTable = () => {
           { isLoading && <div>Loading...</div> }
           {data.map((coin) => (
             <div key={coin.id} onClick={()=> handleRedirect(coin.id)} className="flex gap-4 px-4 border-b-2 border-black cursor-pointer">
-              <div className="flex items-center basis-[30%] border-r-4 border-black p-2">
-                <img src={coin.image} alt={coin.name} className="mr-2 w-15 h-15" loading="lazy" />
+              <div className="flex items-center basis-[30%] border-r-4 border-black p-1">
+                <img src={coin.image} alt={coin.name} className="mr-2 w-13 h-13" loading="lazy" />
                 <div className="flex flex-col">
                   <span className="text-2xl font-bold">{coin.name}</span>
-                  <span className="ml-1 text-lg text-gray-500">({coin.symbol.toUpperCase()})</span>
+                  <span className="text-sm text-gray-500">({coin.symbol.toUpperCase()})</span>
                 </div>
               </div>
               <div className=' basis-[20%] border-r-4 border-black p-2'> {currency==='usd'? '$' : '₹' } {coin.current_price.toLocaleString()}</div>

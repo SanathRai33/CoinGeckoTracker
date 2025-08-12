@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import fetchCoinData from '../../Services/fetchCoinData';
 import { useQuery } from '@tanstack/react-query';
 import { CurrencyContext } from '../../Context/CurrencyContext';
 
 const CoinTable = () => {
 
+  const navigate = useNavigate();
   const { currency } = useContext(CurrencyContext)
-
   const [page, setPage] = useState(1);
 
   const { data, isLoading, isError, error } = useQuery({
@@ -19,7 +20,9 @@ const CoinTable = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
-  console.log(currency)
+  const handleRedirect = (id) => {
+    navigate(`/details/${id}`);
+  }
 
   return (
     <div className='flex flex-col items-center justify-center w-full max-w-full min-w-full py-10 mx-auto'>
@@ -41,7 +44,7 @@ const CoinTable = () => {
         <div className="flex flex-col w-full max-w-full min-w-full">
           { isLoading && <div>Loading...</div> }
           {data.map((coin) => (
-            <div key={coin.id} className="flex gap-4 px-4 border-b-2 border-black">
+            <div key={coin.id} onClick={()=> handleRedirect(coin.id)} className="flex gap-4 px-4 border-b-2 border-black cursor-pointer">
               <div className="flex items-center basis-[30%] border-r-4 border-black p-2">
                 <img src={coin.image} alt={coin.name} className="mr-2 w-15 h-15" />
                 <div className="flex flex-col">

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import fetchCoinData from '../../Services/fetchCoinData';
 import { useQuery } from '@tanstack/react-query';
 import { CurrencyContext } from '../../Context/CurrencyContext';
+import PageLoader from '../PageLoader/PageLoader';
 
 const CoinTable = () => {
 
@@ -17,7 +18,7 @@ const CoinTable = () => {
     staleTime: 1000 * 60 * 2,
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <PageLoader />;
   if (isError) return <div>Error: {error.message}</div>;
 
   const handleRedirect = (id) => {

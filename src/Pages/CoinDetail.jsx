@@ -4,6 +4,7 @@ import fetchCoinDetail from '../Services/fetchCoinDetail';
 import { useQuery } from '@tanstack/react-query';
 import parse from 'html-react-parser';
 import { CurrencyContext } from '../Context/CurrencyContext';
+import PageLoader from '../Components/PageLoader/PageLoader';
 
 const CoinDetail = () => {
     const { coinId } = useParams();
@@ -16,7 +17,7 @@ const CoinDetail = () => {
         staleTime: 1000 * 60 * 2,
     });
 
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <PageLoader />;
     if (isError) return <div>Error: {error.message}</div>;
 
     return (

@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import parse from 'html-react-parser';
 import { CurrencyContext } from '../Context/CurrencyContext';
 import PageLoader from '../Components/PageLoader/PageLoader';
+import CoinInfoContainer from '../Components/CoinInfo/CoinInfoContainer';
 
 const CoinDetail = () => {
     const { coinId } = useParams();
@@ -42,7 +43,7 @@ const CoinDetail = () => {
                 </div>
             </div>
             <div className='basis-[70%] items-center justify-center'>
-                <h1>Coin information</h1>
+                <CoinInfoContainer coinId={coinId}/>
             </div>
         </div>
     );

@@ -10,7 +10,7 @@ const CoinInfoContainer = ({ coinId }) => {
 
   const { currency } = useContext(CurrencyContext);
 
-  const [days, setDays] = useState(1);
+  const [days, setDays] = useState(7);
   const [interval, setCoinInterval] = useState('');
 
   const { data: historicData, isLoading, isError, error } = useQuery({
@@ -25,7 +25,7 @@ const CoinInfoContainer = ({ coinId }) => {
 
 
   return (
-    <div className='w-full h-full bg-white'>
+    <div className='w-full h-full'>
       <CoinInfo
         historicData={historicData}
         setCoinInterval={setCoinInterval}

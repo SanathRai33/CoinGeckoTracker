@@ -1,22 +1,15 @@
-import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import fetchCoinDetail from '../Services/fetchCoinDetail';
-import { useQuery } from '@tanstack/react-query';
 import parse from 'html-react-parser';
-import { CurrencyContext } from '../Context/CurrencyContext';
 import PageLoader from '../Components/PageLoader/PageLoader';
 import CoinInfoContainer from '../Components/CoinInfo/CoinInfoContainer';
+import useFetchCoin from '../hooks/useFetchCoin';
 
 const CoinDetail = () => {
-    const { coinId } = useParams();
-    const { currency } = useContext(CurrencyContext);
 
-    const { data: coin, isLoading, isError, error } = useQuery({
-        queryKey: ['coin', coinId, currency],
-        queryFn: () => fetchCoinDetail(coinId, currency),
-        cacheTime: 1000 * 60 * 2,
-        staleTime: 1000 * 60 * 2,
-    });
+    const { coinId } = useParams();
+    
+    // Custom hook
+    const { currency, isError, isLoading, error, coin } = useFetchCoin(coinId)
 
     if (isLoading) return <PageLoader />;
     if (isError) return <div>Error: {error.message}</div>;

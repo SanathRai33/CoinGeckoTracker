@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
+import Lottie from "lottie-react"
 import { CurrencyContext } from "../../Context/CurrencyContext";
 import { useNavigate } from "react-router-dom";
+import RupeeCoin from "../../assets/JSON/RupeeCoin.json"
 
-const Navbar = ( ) => {
+const Navbar = () => {
 
   const { setCurrency } = useContext(CurrencyContext)
   const navigate = useNavigate();
@@ -45,8 +47,17 @@ const Navbar = ( ) => {
           </ul>
         </div>
       </div>
-      <div className="navbar-center">
-        <a className="text-xl btn btn-ghost" onClick={handleHomeGo}>Gicko Coin Tracke</a>
+      <div className="flex navbar-center">
+        <div className="w-10 h-10 ">
+          <Lottie
+            animationData={RupeeCoin}
+            loop
+            className="w-full h-full"
+            preserveAspectRatio="xMidYMid slice"
+          />
+
+        </div>
+        <a className="pl-0 text-xl btn btn-ghost" onClick={handleHomeGo}>Rai Coin Tracker</a>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">

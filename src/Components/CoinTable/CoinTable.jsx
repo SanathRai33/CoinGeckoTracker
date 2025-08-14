@@ -53,13 +53,15 @@ const CoinTable = () => {
                   <span className="text-sm text-gray-500">({coin.symbol.toUpperCase()})</span>
                 </div>
               </div>
-              <div className=' lg:basis-[20%] sm:basis-[17%] basis-[17%] border-r-4 border-black lg:p-2 sm:p-0 p-0'>
+              <div className=' lg:basis-[20%] sm:basis-[17%] basis-[17%] border-r-4 border-black lg:p-2 sm:p-0 p-0 text-center'>
                 {currency === 'usd' ? '$' : '₹'} {coin.current_price.toLocaleString()}
               </div>
               <div className={`${coin.price_change_percentage_24h > 0 ? 'text-green-500' : 'text-red-500'} lg:basis-[25%] sm:basis-[18%] basis-[18%] border-r-4 text-center border-black p-0 py-2 sm:px-2 lg:p-2`}>
                 {coin.price_change_percentage_24h.toFixed(2)}%
               </div>
-              <div className='lg:basis-[25%] basis-[35%] sm:basis-[35%]  text-center'> {currency === 'usd' ? '$' : '₹'} {coin.market_cap.toLocaleString()}</div>
+              <div className='lg:basis-[25%] basis-[35%] sm:basis-[35%]  text-center'> 
+                {currency === 'usd' ? '$' : '₹'} {coin.market_cap.toLocaleString()}
+              </div>
             </div>
           ))}
         </div>

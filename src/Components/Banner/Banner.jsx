@@ -5,8 +5,8 @@ import Coins from "../../assets/JSON/CryptoCoin.json"
 const Banner = () => {
   return (
     <div className='relative flex flex-col w-full gap-3 overflow-hidden'>
-      <div className='flex flex-col items-center gap-4 pt-10 text-white'>
-        <h1 className='text-6xl font-bold'>Crypto Tracker</h1>
+      <div className='flex flex-col items-center justify-center gap-4 pt-10 text-white lg:justify-start sm:justify-center'>
+        <h1 className='text-6xl font-bold text-center'>Crypto Tracker</h1>
         <p>Get all information regarding Crypto Coins</p>
       </div>
       <div className='relative w-full h-120'>

@@ -25,7 +25,7 @@ const CoinInfoContainer = ({ coinId }) => {
 
 
   return (
-    <div className='w-full h-full'>
+    <div className='w-screen h-full lg:w-full sm:w-screen'>
       <CoinInfo
         historicData={historicData}
         setCoinInterval={setCoinInterval}

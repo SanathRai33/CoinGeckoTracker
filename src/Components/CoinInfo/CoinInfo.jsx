@@ -11,7 +11,7 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
-import { chartDays } from '../../helper/constant';
+import { chartDays } from '../../helper/constant.js';
 
 ChartJS.register(
   CategoryScale,
@@ -40,15 +40,10 @@ const CoinInfo = ({ historicData, setCoinInterval, setDays, days, currency }) =>
     setDays(e.target.options[e.target.selectedIndex].value);
   }
 
-
-  chartDays.map((day) => {
-    console.log(day)
-  })
-
   return (
-    <div className='flex flex-col items-center justify-center w-full h-full p-6 mt-6'>
+    <div className='flex flex-col items-center justify-center w-screen lg:w-full sm:w-screen h-195 lg:h-[500px] sm:h-[800px] py-6 lg:p-6 mt-6'>
 
-      <div className='h-[500px] w-full'>
+      <div className='h-100 lg:h-[500px] sm:h-[300px] lg:w-full w-screen sm:w-screen'>
         <Line
           className='w-full h-100'
           data={{
@@ -65,13 +60,6 @@ const CoinInfo = ({ historicData, setCoinInterval, setDays, days, currency }) =>
                 backgroundColor: 'rgba(255, 0, 0, 0.3)', // Fill under line
                 tension: 0.4,                 // Smooth curve
               },
-              {
-                label: "Line 2",
-                data: [9, 2, 4, 6, 9],
-                borderColor: 'blue',
-                backgroundColor: 'rgba(0, 0, 255, 0.3)',
-                tension: 0.4,
-              }
             ],
           }}
           options={{
@@ -97,19 +85,21 @@ const CoinInfo = ({ historicData, setCoinInterval, setDays, days, currency }) =>
         />
       </div>
 
-      <div className='flex items-center w-full gap-4 p-10 h-50 bg-amber-200'>
-        <h2>Days</h2>
-        <select
-          value={days} // Controlled by state
-          className="select"
-          onChange={handleChangeDays}
-        >
-          {chartDays.map((day, ind) => (
-            <option key={ind} value={day.value}>
-              {day.label}
-            </option>
-          ))}
-        </select>
+      <div className='flex items-center w-full gap-4 p-10 h-50'>
+        <div className='flex items-center gap-1 p-1 pl-2 w-60 bg-amber-200'>
+          <h2 className='text-black'>Days</h2>
+          <select
+            value={days} // Controlled by state
+            className="select"
+            onChange={handleChangeDays}
+          >
+            {chartDays?.map((day, ind) => (
+              <option key={ind} value={day.value}>
+                {day.label}
+              </option>
+            ))}
+          </select>
+        </div>
 
       </div>
 
